@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  box-sizing: border-box;
+}
+
+@layer components {
+  .e-card {
+    @apply bg-gray-900/50 backdrop-blur-lg border border-gray-600 rounded-xl hover:border-gray-500/40 transition-all duration-200 hover:shadow-xl m-1;
+  }
+  .btn {
+    @apply text-white bg-gradient-to-l from-[#1f1f1f] to-blue-700 hover:from-[#36226bbd] hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none font-medium rounded-md text-lg w-full sm:w-auto px-6 py-2 text-center shadow-md hover:shadow-lg transition-all duration-300 ease-in-out whitespace-nowrap;
+  }
+}
+
+input::placeholder{
+  @apply text-gray-400 text-sm
 }
