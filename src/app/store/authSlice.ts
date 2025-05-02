@@ -23,11 +23,11 @@ const authReducer = createReducer(initialState, (builder) => {
     .addCase(setLogin, (state, action) => {
       state.isAuthenticated = true;
       state.user = action?.payload || null;
-    })
-    .addDefaultCase((state) => {
-      state.user = { email: "deepak", password: "deepak" };
-      state.isAuthenticated = false;
     });
+  // .addDefaultCase((state) => {
+  //   state.user = { email: "deepak", password: "deepak" };
+  //   state.isAuthenticated = false;
+  // });
 });
 export default authReducer;
 export { setUser, setLogin };

@@ -65,7 +65,7 @@ export default function Header() {
                 aria-hidden="true"
               />
             </DisclosureButton>
-            <DisclosurePanel className="absolute mt-3 bg-white shadow-lg rounded-md ring-1 ring-gray-900/5 z-10 w-[100px] h-auto translate-x-[-30%] ">
+            <DisclosurePanel className="absolute mt-3 bg-white shadow-lg rounded-md ring-1 ring-gray-900/5 z-10 w-[150px] h-auto translate-x-[-30%] ">
               <div className="p-2">
                 {services.map((service) => (
                   <Link
@@ -114,14 +114,21 @@ export default function Header() {
             </button>
           </div>
           <div className="mt-10 space-y-4">
-            <a href="#" className="block text-base font-semibold text-gray-900">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-base font-semibold text-gray-900"
+            >
               Home
-            </a>
-            <a href="#" className="block text-base font-semibold text-gray-900">
+            </Link>
+            <Link
+              href="about"
+              className="block text-base font-semibold text-gray-900"
+            >
               About
-            </a>
+            </Link>
             <Disclosure>
-              <DisclosureButton className="w-full text-left text-base font-semibold text-gray-900">
+              <DisclosureButton className="w-full flex text-left text-base font-semibold text-gray-900">
                 Services
                 <ChevronDownIcon
                   className="ml-2 h-5 w-5 text-gray-400"
@@ -140,6 +147,20 @@ export default function Header() {
                 ))}
               </DisclosurePanel>
             </Disclosure>
+            <Link
+              href="login"
+              className="block text-base font-semibold text-gray-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
+            <Link
+              href="signup"
+              className="block text-base font-semibold text-gray-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Sign-Up
+            </Link>
           </div>
         </DialogPanel>
       </Dialog>

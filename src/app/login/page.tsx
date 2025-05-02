@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { setLogin } from "../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthType } from "../types/authTypes";
+import { redirect, useRouter } from "next/navigation";
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
   const dispatch = useDispatch();
-
+  const router = useRouter();
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setLoginForm((prev) => ({ ...prev, [name]: value }));
@@ -18,6 +19,8 @@ const Login = () => {
   function submitHandler(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     dispatch(setLogin(loginForm));
+    // redirect("/");
+    router.push("/");
     return console.log(loginForm, "loginForm data");
   }
   return (
