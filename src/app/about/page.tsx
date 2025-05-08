@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import * as motion from "motion/react-client";
+import { easeInOut, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const baseballTournaments = [
@@ -14,6 +13,7 @@ const baseballTournaments = [
     teams: 16,
     prize: "$500,000",
     registrationDeadline: "June 30, 2025",
+    contact: "+91-1234567890",
   },
   {
     name: "West Coast Baseball Classic",
@@ -24,6 +24,7 @@ const baseballTournaments = [
     teams: 20,
     prize: "$300,000",
     registrationDeadline: "July 25, 2025",
+    contact: "+91-1234567890",
   },
   {
     name: "Southern League Invitational",
@@ -34,6 +35,7 @@ const baseballTournaments = [
     teams: 12,
     prize: "$250,000",
     registrationDeadline: "August 31, 2025",
+    contact: "+91-1234567890",
   },
   {
     name: "Midwest Baseball Cup",
@@ -44,6 +46,7 @@ const baseballTournaments = [
     teams: 18,
     prize: "$400,000",
     registrationDeadline: "September 20, 2025",
+    contact: "+91-1234567890",
   },
   {
     name: "International Baseball Masters",
@@ -54,6 +57,7 @@ const baseballTournaments = [
     teams: 24,
     prize: "$1,000,000",
     registrationDeadline: "October 30, 2025",
+    contact: "+91-1234567890",
   },
 ];
 
@@ -65,6 +69,7 @@ const TournamentCard = ({
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md transition-all duration-300 hover:shadow-xl">
       <h2 className="text-xl font-bold text-blue-700">{tournament.name}</h2>
+
       <p className="text-gray-700 mt-2">
         📍 <strong>City:</strong> {tournament.city}
       </p>
@@ -83,6 +88,9 @@ const TournamentCard = ({
       <p className="text-gray-700">
         💰 <strong>Prize:</strong> {tournament.prize}
       </p>
+      <p className="text-gray-700 font-medium mt-2">
+        📞 Contact: {tournament.contact}
+      </p>
       <p className="text-red-500 font-medium mt-2">
         ⏳ Registration Deadline: {tournament.registrationDeadline}
       </p>
@@ -98,7 +106,19 @@ const About = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {baseballTournaments.map((tournament, index) => (
-          <TournamentCard key={index} tournament={tournament} />
+          <motion.div
+            key={index}
+            initial={{ scale: 1, zIndex: 1 }}
+            whileHover={{
+              zIndex: 2,
+              scale: 1.05,
+              transition: { easeInOut, duration: 0.2 },
+            }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1 }}
+          >
+            <TournamentCard key={index} tournament={tournament} />
+          </motion.div>
         ))}
       </div>
     </div>
